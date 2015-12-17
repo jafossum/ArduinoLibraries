@@ -44,10 +44,7 @@ public:
 
 	// initialise the scheduler
 	// void init(Task *tasks, uint8_t numTasks, uint8_t loopFrequency);
-	void init(uint8_t numTasks);
-
-	// Adds a task to the list of jobs
-	void AddTask(Task task);
+	void init(Task *tasks, uint8_t numTasks);
 
 	// Run once every loop to update the tick counter
 	void Tick(void);
@@ -56,17 +53,14 @@ public:
 	void Run();
 
 	// Shows wich task is running (0 if none)
-	static uint8_t currentTask;
+	uint8_t currentTask;
 
 private:
 	// Array for tasks to run
-	Task _tasks;
+	Task *_tasks;
 
 	// Size of array provided. (Number of tasks registered)
 	uint8_t _numTasks;
-
-	// Frequency suplied from the main loop
-	uint8_t _frequency;
 
 	// The actual tick counter
 	uint16_t _tickCounter;

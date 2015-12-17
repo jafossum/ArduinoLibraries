@@ -5,43 +5,110 @@
  Editor:	http://www.visualmicro.com
 */
 
+#include <Arduino.h>
 #include "FrequencySchedulerLib.h"
 
 void BlinkToggle();
 
+#pragma region Declarations
+// Set expected Frequency here
+static int frequency = 1;
+
 static uint8_t ledValue = 0;
+unsigned long timeStart;
+static double timeDelay;
+static uint32_t timeLeft;
+
+FrequencyScheduler scheduler;
+
+static FrequencyScheduler::Task ScheduledTasks[2] = {
+	{ &BlinkToggle, 10 },
+	{ &StupidPrint, 8 },
+};
+
+#pragma endregion 
+
+#pragma region setup
 
 // the setup function runs once when you press reset or power the board
 void setup() {
+
 	// initialize digital pin 13 as an output.
 	pinMode(13, OUTPUT);
 
-	FrequencyScheduler::Task entry1{ &BlinkToggle, 1 };
-	FrequencyScheduler::Task entry2{ &BlinkToggle, 2 };
+	// Initializr the Serial
+	Serial.begin(9600);
 
-	FrequencyScheduler scheduler;
+	// Initialize the scheduler
+	scheduler.init(ScheduledTasks, sizeof(ScheduledTasks));
 
-	scheduler.init(2);
-
-
+	// Time delay in Micros
+	timeDelay = 1000000 / frequency;
 }
+#pragma endregion 
+
+#pragma region loop
 
 // the loop function runs over and over again forever
 void loop() {
-	digitalWrite(13, HIGH);   // turn the LED on (HIGH is the voltage level)
-	delay(1000);              // wait for a second
-	digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
-	delay(1000);              // wait for a second
+
+	timeStart = micros();
+
+	// Tick the scheduler once every loop
+	scheduler.Tick();
+
+	// Run the scheduler
+	scheduler.Run();
+
+	// Calculate the time left according to Frequency
+	timeLeft = timeDelay - (micros() - timeStart);
+
+	if (timeLeft > timeDelay){
+		Serial.print("This was not good!!");
+	};
+#ifdef DEBUG
+	Serial.print("TimeLeft: ");
+	Serial.println(timeLeft);
+#endif //DEBUG
+
+	// wait for the amount of time that is left to keep the Hz stable
+	delayMicroseconds(timeLeft); 
+
+	// wait for the amount of time that is left to keep the Hz stable
+	// If delatMicroseconds overflows, use delay
+	if (timeLeft < 65536){
+		delayMicroseconds(timeLeft);
+	}
+	else{
+		delay(timeLeft / 1000);
+	}
 }
 
+#pragma endregion 
+
+#pragma region PublicMembers
+
+// Toggle the PIN 13 Diode to see that code is running
 void BlinkToggle()
 {
+	Serial.println("Actually setting LED");
+
 	if (ledValue)
 	{
 		digitalWrite(13, HIGH);
+		ledValue = false;
 	}
 	else
 	{
 		digitalWrite(13, LOW);
+		ledValue = true;
 	}
 }
+
+// Doing nothing other that print to verify run
+void StupidPrint()
+{
+	Serial.println("Setting stupid print");
+}
+
+#pragma endregion
