@@ -59,6 +59,9 @@ ipch/
 *.vsp
 *.vspx
 
+# Visual Micro Arduino
+*.vmps.xml
+
 # Guidance Automation Toolkit
 *.gpState
 

@@ -10,9 +10,24 @@
 
 void BlinkToggle();
 
-#pragma region Declarations
+#pragma region DefineScheduler
+
+/*
+User Variable Area
+*/
 // Set expected Frequency here
-static int frequency = 1;
+#define FREQUENCY 400
+#define NUM_SCHEDULED_TASKS 2
+
+// Add tasks here
+static FrequencyScheduler::Task ScheduledTasks[NUM_SCHEDULED_TASKS] = {
+	{ &BlinkToggle, 200 },
+	{ &StupidPrint, 100 },
+};
+
+#pragma endregion
+
+#pragma region Decalrations
 
 static uint8_t ledValue = 0;
 unsigned long timeStart;
@@ -20,11 +35,6 @@ static double timeDelay;
 static uint32_t timeLeft;
 
 FrequencyScheduler scheduler;
-
-static FrequencyScheduler::Task ScheduledTasks[2] = {
-	{ &BlinkToggle, 10 },
-	{ &StupidPrint, 8 },
-};
 
 #pragma endregion 
 
@@ -37,13 +47,13 @@ void setup() {
 	pinMode(13, OUTPUT);
 
 	// Initializr the Serial
-	Serial.begin(9600);
+	Serial.begin(115200);
 
 	// Initialize the scheduler
-	scheduler.init(ScheduledTasks, sizeof(ScheduledTasks));
+	scheduler.init(ScheduledTasks, NUM_SCHEDULED_TASKS);
 
 	// Time delay in Micros
-	timeDelay = 1000000 / frequency;
+	timeDelay = 1000000 / FREQUENCY;
 }
 #pragma endregion 
 

@@ -8,7 +8,7 @@
 #include "FrequencySchedulerLib.h"
 
 // Set this flag to get DEBUG printouts in the scheduler
-//#define DEBUG 1
+#define DEBUG 1
 
 // Initializt the Scheduler with task list and frequency
 // void FrequencyScheduler::init(FrequencyScheduler::Task *tasks, uint8_t numTasks, uint8_t LoopFrequency)
