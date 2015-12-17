@@ -22,7 +22,7 @@ User Variable Area
 // Add tasks here
 static FrequencyScheduler::Task ScheduledTasks[NUM_SCHEDULED_TASKS] = {
 	{ &BlinkToggle, 200 },
-	{ &StupidPrint, 100 },
+	{ &StupidPrint, 400 },
 };
 
 #pragma endregion
@@ -75,23 +75,26 @@ void loop() {
 
 	if (timeLeft > timeDelay){
 		Serial.print("This was not good!!");
-	};
-#ifdef DEBUG
-	Serial.print("TimeLeft: ");
-	Serial.println(timeLeft);
-#endif //DEBUG
-
-	// wait for the amount of time that is left to keep the Hz stable
-	delayMicroseconds(timeLeft); 
-
-	// wait for the amount of time that is left to keep the Hz stable
-	// If delatMicroseconds overflows, use delay
-	if (timeLeft < 65536){
-		delayMicroseconds(timeLeft);
 	}
 	else{
-		delay(timeLeft / 1000);
+#ifdef DEBUG
+		Serial.print("TimeLeft: ");
+		Serial.println(timeLeft);
+#endif //DEBUG
+
+		// wait for the amount of time that is left to keep the Hz stable
+		delayMicroseconds(timeLeft);
+
+		// wait for the amount of time that is left to keep the Hz stable
+		// If delatMicroseconds overflows, use delay
+		if (timeLeft < 65536){
+			delayMicroseconds(timeLeft);
+		}
+		else{
+			delay(timeLeft / 1000);
+		}
 	}
+
 }
 
 #pragma endregion 
