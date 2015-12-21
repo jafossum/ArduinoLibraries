@@ -45,13 +45,13 @@
     <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\mavlink_conversions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\mavlink_helpers.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\mavlink_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\protocol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\mavlink_helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
