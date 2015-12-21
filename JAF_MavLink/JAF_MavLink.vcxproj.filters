@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="JAF_FrequencyScheduler.ino" />
+    <None Include="JAF_MavLink.ino" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="__vm\.JAF_FrequencyScheduler.vsarduino.h">
+    <ClInclude Include="__vm\.JAF_MavLink.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_FrequencyScheduler\src\JAF_FrequencyScheduler.h">
+    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_MavLink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\_micro-api\libraries\JAF_FrequencyScheduler\src\JAF_FrequencyScheduler.cpp">
+    <ClCompile Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_MavLink.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
