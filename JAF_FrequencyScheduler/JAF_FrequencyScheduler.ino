@@ -1,12 +1,12 @@
 /*
- Name:		FrequencyScheduler.ino
- Created:	12/16/2015 8:30:32 PM
- Author:	JohnF
- Editor:	http://www.visualmicro.com
+Name:		JAF_FrequencyScheduler.ino
+Created:	12/16/2015 8:30:32 PM
+Author:	JohnF
+Editor:	http://www.visualmicro.com
 */
 
+#include "JAF_FrequencyScheduler.h"
 #include <Arduino.h>
-#include "FrequencySchedulerLib.h"
 
 void BlinkToggle();
 
@@ -20,7 +20,7 @@ User Variable Area
 #define NUM_SCHEDULED_TASKS 2
 
 // Add tasks here
-static FrequencyScheduler::Task ScheduledTasks[NUM_SCHEDULED_TASKS] = {
+static JAF_FrequencyScheduler::Task ScheduledTasks[NUM_SCHEDULED_TASKS] = {
 	{ &BlinkToggle, 200 },
 	{ &StupidPrint, 400 },
 };
@@ -34,7 +34,7 @@ unsigned long timeStart;
 static double timeDelay;
 static uint32_t timeLeft;
 
-FrequencyScheduler scheduler;
+JAF_FrequencyScheduler scheduler;
 
 #pragma endregion 
 

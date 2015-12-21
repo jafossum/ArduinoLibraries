@@ -15,19 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <None Include="FrequencyScheduler.ino" />
-    <None Include="src\_micro-api\libraries\FrequencySchedulerLib\library.properties" />
+    <None Include="JAF_FrequencyScheduler.ino" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\_micro-api\libraries\FrequencySchedulerLib\src\FrequencySchedulerLib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="src\_micro-api\libraries\FrequencySchedulerLib\src\FrequencySchedulerLib.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="__vm\.FrequencyScheduler.vsarduino.h">
+    <ClInclude Include="__vm\.JAF_FrequencyScheduler.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

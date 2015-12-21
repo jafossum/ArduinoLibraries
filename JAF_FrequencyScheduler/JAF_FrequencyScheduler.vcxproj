@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -11,21 +11,20 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{C5F80730-F44F-4478-BDAE-6634EFC2CA88}</ProjectGuid>
-    <RootNamespace>FrequencyScheduler</RootNamespace>
-    <ProjectName>FrequencyScheduler</ProjectName>
+    <ProjectGuid>{DBEFDC2F-58DF-491B-8AC4-38C077302BEF}</ProjectGuid>
+    <RootNamespace>JAF_FrequencyScheduler</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v120</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
@@ -45,10 +44,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;E:\!GitHub\ArduinoLibraries\FrequencyScheduler;E:\!GitHub\ArduinoLibraries\FrequencyScheduler\src\_micro-api\libraries\FrequencySchedulerLib\src;E:\!GitHub\ArduinoLibraries\FrequencyScheduler\src\_micro-api\libraries\FrequencySchedulerLib\src\utility;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\cklx4axv.kpm\Micro Platforms\default\debuggers;C:\Users\johnf\Documents\Arduino\libraries;E:\!GitHub\ArduinoLibraries\FrequencyScheduler;C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;E:\!GitHub\ArduinoLibraries\FrequencyScheduler\src\_micro-api\libraries\FrequencySchedulerLib\src;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\cklx4axv.kpm\Micro Platforms\default\debuggers;C:\Users\johnf\Documents\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\tools\avr/avr/include/;C:\Program Files (x86)\Arduino\hardware\tools\avr//avr/include/avr/;C:\Program Files (x86)\Arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <ForcedIncludeFiles>E:\!GitHub\ArduinoLibraries\FrequencyScheduler\__vm\.FrequencyScheduler.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
-      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
-      <PreprocessorDefinitions>__AVR_ATmega2560__;F_CPU=16000000L;ARDUINO=10605;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;C:\Users\johnf\Documents\Arduino\JAF_FrequencyScheduler;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\t2j1aogq.5jw\Micro Platforms\default\debuggers;C:\Users\johnf\Documents\Arduino\libraries;C:\!Private\GitHub\ArduinoLibraries\FrequencyScheduler;C:\Program Files (x86)\Arduino\hardware\arduino\avr\cores\arduino;C:\Program Files (x86)\Arduino\hardware\arduino\avr\variants\mega;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\t2j1aogq.5jw\Micro Platforms\default\debuggers\VM_DBG;C:\Program Files (x86)\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\arduino\avr\libraries;C:\Program Files (x86)\Microsoft Visual Studio 12.0\Common7\IDE\Extensions\t2j1aogq.5jw\Micro Platforms\default\debuggers;C:\Users\johnf\Documents\Arduino\libraries;C:\Program Files (x86)\Arduino\hardware\tools\avr/avr/include/;C:\Program Files (x86)\Arduino\hardware\tools\avr//avr/include/avr/;C:\Program Files (x86)\Arduino\hardware\tools\avr/lib\gcc\avr\4.8.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>C:\Users\johnf\Documents\Arduino\JAF_FrequencyScheduler\__vm\.JAF_FrequencyScheduler.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <PreprocessorDefinitions>__AVR_ATmega2560__;F_CPU=16000000L;ARDUINO=10606;ARDUINO_AVR_MEGA2560;ARDUINO_ARCH_AVR;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -69,19 +67,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="FrequencyScheduler.ino">
+    <None Include="JAF_FrequencyScheduler.ino">
       <FileType>CppCode</FileType>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\_micro-api\libraries\FrequencySchedulerLib\src\FrequencySchedulerLib.h" />
-    <ClInclude Include="__vm\.FrequencyScheduler.vsarduino.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\_micro-api\libraries\FrequencySchedulerLib\src\FrequencySchedulerLib.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="src\_micro-api\libraries\FrequencySchedulerLib\library.properties" />
+    <ClInclude Include="__vm\.JAF_FrequencyScheduler.vsarduino.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

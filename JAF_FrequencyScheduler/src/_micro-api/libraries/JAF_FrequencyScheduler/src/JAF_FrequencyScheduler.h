@@ -1,17 +1,17 @@
 /*
- Name:		FrequencySchedulerLib.h
- Created:	12/16/2015 8:30:32 PM
- Author:	JohnF
- Editor:	http://www.visualmicro.com
+Name:		JAF_FrequencyScheduler.h
+Created:	12/16/2015 8:30:32 PM
+Author:	JohnF
+Editor:	http://www.visualmicro.com
 */
 
-#ifndef _FREQUENCYSCHEDULER_H
-#define _FREQUENCYSCHEDULER_H
+#ifndef _JAF_FREQUENCYSCHEDULER_H
+#define _JAF_FREQUENCYSCHEDULER_H
 
 #if defined(ARDUINO) && ARDUINO >= 100
-	#include "arduino.h"
+#include "arduino.h"
 #else
-	#include "WProgram.h"
+#include "WProgram.h"
 #endif
 
 /* Frequency Scheduler takes in a lest (array) of struct Task to keep track of.
@@ -33,7 +33,7 @@ if Task.interval = 100 -> task to run every tick at 1Hz
 // Typedef for a function pointer
 typedef void(*functionPtr)();
 
-class FrequencyScheduler
+class JAF_FrequencyScheduler
 {
 public:
 

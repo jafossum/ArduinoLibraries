@@ -1,18 +1,18 @@
 /*
- Name:		FrequencySchedulerLib.cpp
- Created:	12/16/2015 8:30:32 PM
- Author:	JohnF
- Editor:	http://www.visualmicro.com
+Name:		JAF_FrequencyScheduler.cpp
+Created:	12/16/2015 8:30:32 PM
+Author:	JohnF
+Editor:	http://www.visualmicro.com
 */
 
-#include "FrequencySchedulerLib.h"
+#include "JAF_FrequencyScheduler.h"
 
 // Set this flag to get DEBUG printouts in the scheduler
 #define DEBUG 1
 
 // Initializt the Scheduler with task list and frequency
-// void FrequencyScheduler::init(FrequencyScheduler::Task *tasks, uint8_t numTasks, uint8_t LoopFrequency)
-void FrequencyScheduler::init(FrequencyScheduler::Task *tasks, uint8_t numTasks)
+// void JAF_FrequencyScheduler::init(JAF_FrequencyScheduler::Task *tasks, uint8_t numTasks, uint8_t LoopFrequency)
+void JAF_FrequencyScheduler::init(JAF_FrequencyScheduler::Task *tasks, uint8_t numTasks)
 {
 	_numTasks = numTasks;
 	_tickCounter = 0;
@@ -20,13 +20,13 @@ void FrequencyScheduler::init(FrequencyScheduler::Task *tasks, uint8_t numTasks)
 };
 
 // Run once every loop to update the tick counter
-void FrequencyScheduler::Tick(void)
+void JAF_FrequencyScheduler::Tick(void)
 {
 	_tickCounter++;
 }
 
 // Run this once per tick to run the tasks.
-void FrequencyScheduler::Run()
+void JAF_FrequencyScheduler::Run()
 {
 	for (uint8_t i = 0; i < _numTasks; i++)
 	{
