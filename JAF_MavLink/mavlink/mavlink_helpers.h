@@ -5,8 +5,6 @@
 #include "checksum.h"
 #include "mavlink_types.h"
 #include "mavlink_conversions.h"
-#include "../JAF_MavLink.h"
-#include "JAF_MavLink.h"
 
 #ifndef MAVLINK_HELPER
 #define MAVLINK_HELPER
@@ -641,9 +639,9 @@ MAVLINK_HELPER uint8_t put_bitfield_n_by_index(int32_t b, uint8_t bits, uint8_t 
 // To make MAVLink work on your MCU, define comm_send_ch() if you wish
 // to send 1 byte at a time, or MAVLINK_SEND_UART_BYTES() to send a
 // whole packet at a time
-/*
-#include "mavlink_types.h"
 
+#include "mavlink_types.h"
+/*
 void comm_send_ch(mavlink_channel_t chan, uint8_t ch)
 {
     if (chan == MAVLINK_COMM_0)

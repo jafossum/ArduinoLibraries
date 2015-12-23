@@ -146,7 +146,7 @@ typedef enum MAV_STATE
 #endif
 
 // MESSAGE DEFINITIONS
-#include "./mavlink_msg_heartbeat.h"
+#include "mavlink_msg_heartbeat.h"
 
 #ifdef __cplusplus
 }
