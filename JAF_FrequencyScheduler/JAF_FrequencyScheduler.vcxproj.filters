@@ -21,12 +21,12 @@
     <ClInclude Include="__vm\.JAF_FrequencyScheduler.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_FrequencyScheduler\src\JAF_FrequencyScheduler.h">
+    <ClInclude Include="JAF_FrequencyScheduler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\_micro-api\libraries\JAF_FrequencyScheduler\src\JAF_FrequencyScheduler.cpp">
+    <ClCompile Include="JAF_FrequencyScheduler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

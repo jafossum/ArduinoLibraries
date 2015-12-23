@@ -21,43 +21,41 @@
     <ClInclude Include="__vm\.JAF_MavLink.vsarduino.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_MavLink.h">
+    <ClInclude Include="mavlink_bridge_header.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\JAF_QuadProject\JAF_QuadProject.h">
+    <ClInclude Include="mavlink_receive.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\JAF_QuadProject\mavlink.h">
+    <ClInclude Include="mavlink\JAF_QuadProject\JAF_QuadProject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\JAF_QuadProject\mavlink_msg_heartbeat.h">
+    <ClInclude Include="mavlink\JAF_QuadProject\mavlink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\JAF_QuadProject\testsuite.h">
+    <ClInclude Include="mavlink\JAF_QuadProject\mavlink_msg_heartbeat.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\JAF_QuadProject\version.h">
+    <ClInclude Include="mavlink\JAF_QuadProject\testsuite.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\checksum.h">
+    <ClInclude Include="mavlink\JAF_QuadProject\version.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\mavlink_conversions.h">
+    <ClInclude Include="mavlink\checksum.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\mavlink_types.h">
+    <ClInclude Include="mavlink\mavlink_conversions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\protocol.h">
+    <ClInclude Include="mavlink\mavlink_helpers.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_Protocol\mavlink_helpers.h">
+    <ClInclude Include="mavlink\mavlink_types.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\_micro-api\libraries\JAF_MavLink\src\JAF_MavLink.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="mavlink\protocol.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
