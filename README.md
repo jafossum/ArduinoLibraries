@@ -28,3 +28,7 @@ Library with inheritance from built in Arduino Library [Servo](https://www.ardui
 
 This will be used together with **JAF_FrequencyScheduler** in a set frequency to set PWM signals to ESCs connected
 to defined pins.
+
+## JAF_Watchdog
+
+Library that wraps the default *<avr/wdt.h>* Watchdog lib for Arduino. This is for easyer extension on Watchdog functionality later. 
