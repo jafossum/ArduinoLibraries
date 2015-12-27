@@ -17,5 +17,17 @@
   <ItemGroup>
     <None Include="JAF_Watchdog.ino" />
   </ItemGroup>
- 
+  <ItemGroup>
+    <ClCompile Include="src\_micro-api\libraries\JAF_WatchdogLib\src\JAF_WatchdogLib.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\_micro-api\libraries\JAF_WatchdogLib\src\JAF_WatchdogLib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="__vm\.JAF_Watchdog.vsarduino.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
