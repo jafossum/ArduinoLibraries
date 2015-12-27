@@ -5,7 +5,7 @@ Author:	JohnF
 Editor:	http://www.visualmicro.com
 */
 
-#include "JAF_FrequencyShedulerLib.h"
+#include "JAF_FrequencySchedulerLib.h"
 
 // Set this flag to get DEBUG printouts in the scheduler
 #define DEBUG 1

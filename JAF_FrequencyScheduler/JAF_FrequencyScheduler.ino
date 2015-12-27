@@ -5,8 +5,7 @@ Author:	JohnF
 Editor:	http://www.visualmicro.com
 */
 
-#include "JAF_FrequencyShedulerLib.h"
-#include <Arduino.h>
+#include "JAF_FrequencySchedulerLib.h"
 
 void BlinkToggle();
 
