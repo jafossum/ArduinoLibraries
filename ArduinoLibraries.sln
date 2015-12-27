@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JAF_MavLink", "JAF_MavLink\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JAF_FrequencyScheduler", "JAF_FrequencyScheduler\JAF_FrequencyScheduler.vcxproj", "{DBEFDC2F-58DF-491B-8AC4-38C077302BEF}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "JAF_EscController", "JAF_EscController\JAF_EscController.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -21,6 +23,10 @@ Global
 		{DBEFDC2F-58DF-491B-8AC4-38C077302BEF}.Debug|Win32.Build.0 = Debug|Win32
 		{DBEFDC2F-58DF-491B-8AC4-38C077302BEF}.Release|Win32.ActiveCfg = Release|Win32
 		{DBEFDC2F-58DF-491B-8AC4-38C077302BEF}.Release|Win32.Build.0 = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|Win32.Build.0 = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Win32.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
