@@ -22,3 +22,9 @@ projects.
 This will be an ongoing project with MavLink methods added as they are needed into my own MavLink definition 
 files.
 
+## JAF_EscController
+
+Library with inheritance from built in Arduino Library [Servo](https://www.arduino.cc/en/Reference/Servo).
+
+This will be used together with **JAF_FrequencyScheduler** in a set frequency to set PWM signals to ESCs connected
+to defined pins.
