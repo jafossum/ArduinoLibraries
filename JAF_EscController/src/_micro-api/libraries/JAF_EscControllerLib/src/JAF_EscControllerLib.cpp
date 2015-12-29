@@ -8,13 +8,16 @@
 #include <Arduino.h>
 #include "JAF_EscControllerLib.h"
 
+#define DEBUG 1
+
 JAF_EscControllerLib::JAF_EscControllerLib(){}
 
 #pragma region Members
 
 void JAF_EscControllerLib::init(uint8_t pinNumber)
 {
-	_servo.attach((int)pinNumber);
+	this->attach((int)pinNumber);
+
 }
 
 /* Setting saturation limits on the ESC Output. Set lowLimit higher than
@@ -22,9 +25,9 @@ arming value of ESC to avoid arming when not intended
 
 (micros)minLimit = 0% output
 (micros)maxLimit = 100% output */
-void JAF_EscControllerLib::setLimits(uint8_t minLimit, uint8_t maxLimit)
+void JAF_EscControllerLib::setLimits(uint16_t minLimit, uint16_t maxLimit)
 {
-	if (minLimit > maxLimit){
+	if (minLimit < maxLimit){
 		_minLimit = minLimit;
 		_maxLimit = maxLimit;
 
@@ -42,7 +45,7 @@ void JAF_EscControllerLib::arm()
 }
 
 // Set output to ESC 0 - 100%
-void JAF_EscControllerLib::writeMicrosec(uint8_t micros)
+void JAF_EscControllerLib::writeMicrosec(uint16_t micros)
 {
 //#if DEBUG
 	Serial.print("Input micros on servo: ");
@@ -62,7 +65,7 @@ void JAF_EscControllerLib::writeMicrosec(uint8_t micros)
 //#endif
 
 	// Write PWN to uotput pin
-	_servo.writeMicroseconds((int)micros);
+	this->writeMicroseconds((int)micros);
 }
 
 // Set output to ESC 0 - 100%
@@ -89,7 +92,7 @@ void JAF_EscControllerLib::writeRelativeOuput(uint8_t output)
 //#endif
 
 	// Write PWN to uotput pin
-	_servo.writeMicroseconds((int)map(output, 0, 100, _minLimit, _maxLimit));
+	this->writeMicroseconds((int)map(output, 0, 100, _minLimit, _maxLimit));
 }
 
 #pragma endregion

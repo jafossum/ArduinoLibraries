@@ -4,8 +4,6 @@ Created:	12/26/2015 8:47:41 PM
 Author:	JohnF
 */
 
-#define DEBUG 1
-
 #include <Servo.h>
 #include <Arduino.h>
 #include "JAF_EscControllerlib.h"

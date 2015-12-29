@@ -10,13 +10,12 @@
 
 #include <Servo.h>
 
-class JAF_EscControllerLib
+class JAF_EscControllerLib : Servo
 {
 private:
 
-	Servo _servo;
-	uint8_t _minLimit = 700;
-	uint8_t _maxLimit = 2300;
+	uint16_t _minLimit;
+	uint16_t _maxLimit;
 
 public:
 
@@ -24,9 +23,9 @@ public:
 
 	void init(uint8_t pinNumber);
 	void arm();
-	void writeMicrosec(uint8_t micros);
+	void writeMicrosec(uint16_t micros);
 	void writeRelativeOuput(uint8_t output);
-	void setLimits(uint8_t minLimit, uint8_t maxLimit);
+	void setLimits(uint16_t minLimit, uint16_t maxLimit);
 };
 
 #endif
