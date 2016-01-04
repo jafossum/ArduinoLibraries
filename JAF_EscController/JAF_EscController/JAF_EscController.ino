@@ -19,11 +19,8 @@ void setup() {
 
 	Serial.begin(57600);
 
-	escTest.init(9);
-	escTest.setLimits(1000, 2000);
-
-	escTest2.init(10);
-	escTest2.setLimits(1000, 2000);
+	escTest.init(9, 1000, 2000);
+	escTest2.init(10, 1000, 2000);
 
 	Serial.println("Ready...type a numer to set PWM in microseconds");
 }
