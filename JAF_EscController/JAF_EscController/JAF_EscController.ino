@@ -70,7 +70,7 @@ void loop() {
 				escTest.writeMicrosec(currentOutput);
 				escTest2.writeMicrosec(currentOutput);
 			}
-		}
+			}
 
 		// Arming ESC
 		if (charToInt == 'A')

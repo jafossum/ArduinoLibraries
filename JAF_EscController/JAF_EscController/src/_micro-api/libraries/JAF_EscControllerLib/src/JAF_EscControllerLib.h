@@ -16,12 +16,13 @@ private:
 
 	uint16_t _minLimit;
 	uint16_t _maxLimit;
+	boolean _armed = false;
 
 public:
 
 	JAF_EscControllerLib();
 
-	void init(uint8_t pinNumber);
+	void init(uint8_t pinNumber, uint16_t minLimit, uint16_t maxLimit);
 	void arm();
 	void writeMicrosec(uint16_t Micros);
 	void writeRelativeOuput(uint8_t output);
