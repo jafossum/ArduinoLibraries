@@ -41,7 +41,8 @@ void JAF_EscControllerLib::setLimits(uint16_t minLimit, uint16_t maxLimit)
 // Arm the ESC. Sets signal so low the ESC can be armed
 void JAF_EscControllerLib::arm()
 {
-	// NOT IMPLEMENTED YET
+	// Write walue lower than operating values to arm the ESC
+	this->writeMicroseconds(1000);
 }
 
 // Set output to ESC 0 - 100%
@@ -88,11 +89,20 @@ void JAF_EscControllerLib::writeRelativeOuput(uint8_t output)
 
 //#if DEBUG
 	Serial.print("Actual OutPut: ");
-	Serial.println(output);
+	Serial.println((int)map(output, 0, 100, _minLimit, _maxLimit));
 //#endif
 
 	// Write PWN to uotput pin
 	this->writeMicroseconds((int)map(output, 0, 100, _minLimit, _maxLimit));
+}
+
+int JAF_EscControllerLib::readSetting()
+{
+	return this->read();
+}
+int JAF_EscControllerLib::readSettingMicroseconds()
+{
+	return this->readMicroseconds();
 }
 
 #pragma endregion

@@ -23,9 +23,12 @@ public:
 
 	void init(uint8_t pinNumber);
 	void arm();
-	void writeMicrosec(uint16_t micros);
+	void writeMicrosec(uint16_t Micros);
 	void writeRelativeOuput(uint8_t output);
 	void setLimits(uint16_t minLimit, uint16_t maxLimit);
+
+	int readSetting();
+	int readSettingMicroseconds();
 };
 
 #endif
