@@ -28,12 +28,10 @@ void setup() {
 	Serial.begin(57600);
 
 	// Esc 1 on PIN 9
-	escTest.init(9);
-	escTest.setLimits(1090, 1860);
+	escTest.init(9, 1100, 1860);
 
 	// Esc 2 on PIN 10
-	escTest2.init(10);
-	escTest2.setLimits(1090, 1860);
+	escTest2.init(10, 1100, 1860);
 
 	Serial.println("Ready...type a numer to set PWM in microseconds");
 
