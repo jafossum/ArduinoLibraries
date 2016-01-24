@@ -7,35 +7,37 @@
 
 #include "JAF_UltrasonicLib.h"
 
-JAF_UltrasonicLib Ultrasonic;
+JAF_UltrasonicLib Ultrasonic(200);
 uint16_t meassurement = 0; 
 uint16_t lastMeassurement = 0;
 
 // the setup function runs once when you press reset or power the board
 void setup() {
-	
-	Ultrasonic = JAF_UltrasonicLib();
-	Ultrasonic.init();
-
-	attachInterrupt(digitalPinToInterrupt(INTERUPTPIN), Ultrasonic.calculateMeassurement, RISING);
 
 	Serial.begin(57600);
 	while(!Serial){}
+
+	Ultrasonic.init();
+
+	delay(100);
+
+	Ultrasonic.trigg();
 }
 
 // the loop function runs over and over again until power down or reset
 void loop() {
   
-	meassurement = Ultrasonic.getMeassurement();
-	
-	if (meassurement != lastMeassurement)
+	if (Ultrasonic.isFinished())
 	{
-		Serial.print("New Meassurement: ");
+		meassurement = Ultrasonic.getRange();
 		Serial.print(meassurement);
 		Serial.println("cm");
 
 		lastMeassurement = meassurement;
 	}
-	
-	delay(1);
+
+	// Running at 50Hz
+	delay(20);
+
+	Ultrasonic.trigg();
 }

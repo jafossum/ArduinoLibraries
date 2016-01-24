@@ -7,48 +7,84 @@
 
 #include "JAF_UltrasonicLib.h"
 
-JAF_UltrasonicLib::JAF_UltrasonicLib()
+// Pointer to _instance
+JAF_UltrasonicLib *JAF_UltrasonicLib::_instance = NULL;
+
+#pragma region Constructor
+// Constructor. Setting instance pointer to this
+JAF_UltrasonicLib::JAF_UltrasonicLib(int maxDist)
 {
+	_maxDist = maxDist; 
+	_finished = false;
 
+	if (_instance == 0) _instance = this;
 }
+#pragma endregion
 
+#pragma region Members
+
+// Init method for setting up the pinmodes and attaching interrupt.
+// Using pin 2 and 3 for Uno
+// Using pin 19 and 18 for Mega 2560
+// This is for simplicity when using PORTD bit 2 and 3.
 void JAF_UltrasonicLib::init()
 {
-	_state = IDLE;
+	pinMode(TRIGGERPIN, OUTPUT);
+	pinMode(INTERUPTPIN, INPUT);
+	digitalWrite(TRIGGERPIN, LOW);
+	attachInterrupt(digitalPinToInterrupt(INTERUPTPIN), JAF_UltrasonicLib::_signal, CHANGE);
 }
 
-uint16_t JAF_UltrasonicLib::getMeassurement()
+// trigg the sensor to run another start. run this frequently to get readings.
+// Only triggers if a trigg is not allready started.
+// If Timeout distance reached it starts over
+void JAF_UltrasonicLib::trigg()
 {
-	if (_state == IDLE)
+	if (_finished)
 	{
-		this->_startMeassurement();
+		_finished = false;
+		// Set trigPin high. PIN 2 on Uno, PIN 19 on Mega 2560
+		PORTD |= B00000100;
+
+		delayMicroseconds(10);
+
+		// Set trigpin Low. PIN 2 on Uno, PIN 19 on Mega 2560
+		PORTD &= B11111011;
+	}	
+
+	// reset _finished flag ehwn timeout on distance
+	if ((micros() - _startTime) > (_maxDist * DISTANCE_CALC_CM))
+	{
+		_finished = true;
 	}
-
-	return _lastDistance;
 }
 
-void JAF_UltrasonicLib::calculateMeassurement()
+// If IsFinished is set. get the reange meassurement by calling this
+uint16_t JAF_UltrasonicLib::getRange()
 {
-	_state = MEASSURE;
-	_lastDistance = (micros() - _startTime) * DISTANCE_CALC;
-	_state = IDLE;
+	_range = (_endTime - _startTime) / DISTANCE_CALC_CM;
+	return (_range < _maxDist) ? _range : 0;
 }
 
-void JAF_UltrasonicLib::_startMeassurement()
-{
-	_state = TRIGGER;
+# pragma endregion
 
-	// Set trigPin high
-	PORTD |= B00001000;
+#pragma region Private Members
 
-	delayMicroseconds(10);
+// Interrupt routine to run on input change. Uses the instance pointer to get data.
+void JAF_UltrasonicLib::_signal(){
+	JAF_UltrasonicLib* _this = JAF_UltrasonicLib::instance();
 
-	// Set trigpin Low
-	PORTD &= B11110111;
-
-	// getTime
-	_startTime = micros();
-	_state = WAITING;
+	switch (PIND &= B00001000) // PIN 3 on Uno, PIN 18 on Mega 2560
+	{
+		case 8:
+			_this->_startTime = micros();
+			break;
+		case 0:
+			_this->_endTime = micros();
+			_this->_finished = true;
+			break;
+	}
 }
 
+# pragma endregion
 

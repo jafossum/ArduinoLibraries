@@ -14,35 +14,38 @@
 	#include "WProgram.h"
 #endif
 
+#if defined(__AVR_ATmega2560__)
+#define INTERUPTPIN 19
+#define TRIGGERPIN 18
+#else
 #define INTERUPTPIN 3
 #define TRIGGERPIN 2
-#define DISTANCE_CALC 0.017
+#endif
 
-typedef enum MEASSURE_STATE
-{
-	IDLE=0,
-	TRIGGER=1,
-	WAITING=2,
-	MEASSURE=3,
-}MEASSURE_STATE;
+#define DISTANCE_CALC_CM 58
 
 class JAF_UltrasonicLib
 {
 
 private:
-	void _startMeassurement(void);
-	uint8_t _trigPin;
-	uint32_t _startTime;
-	uint16_t _timerId;
-	uint16_t _lastDistance;
-	MEASSURE_STATE _state;
+	
+	uint8_t _maxDist;
+	uint16_t _range;
+	volatile unsigned long _startTime, _endTime;
+	volatile bool _finished;
+	
+	static void _signal();
+	static JAF_UltrasonicLib* _instance;
 
 public:
-	JAF_UltrasonicLib(void);
+	JAF_UltrasonicLib(int max_dist);
+
 	void init();
-	void calculateMeassurement();
-	uint16_t getMeassurement(void);
-	
+	void trigg(void);
+	uint16_t getRange(void);
+
+	bool isFinished(){ return _finished; }
+	static JAF_UltrasonicLib* instance(){ return _instance; }
 };
 
 #endif
