@@ -32,3 +32,7 @@ to defined pins.
 ## JAF_Watchdog
 
 Library that wraps the default *\<avr/wdt.h\>* Watchdog lib for Arduino. This is for easyer extension on Watchdog functionality later. 
+
+## JAF_Ultrasonic
+
+Library for Non-Blocking HC-SR04 Ultrasonic Sensor functionality 
