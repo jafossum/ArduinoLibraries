@@ -61,6 +61,7 @@ ipch/
 
 # Visual Micro Arduino
 __vm
+*.vcxproj
 
 # Guidance Automation Toolkit
 *.gpState
