@@ -36,5 +36,5 @@ Library that wraps the default *\<avr/wdt.h\>* Watchdog lib for Arduino. This is
 ## JAF_Ultrasonic
 
 Library for Non-Blocking HC-SR04 Ultrasonic Sensor functionality.
-Currently HardCoded for Uno on pin (2, 3) and Mega 2560 on Pin (19, 18). This for simplicity when using direct port PORTD and PIND
-for PIN manipulation. This because of speed.
+Currently HardCoded for UNO and Mega2560 on pin (2, 3). This for simplicity when using direct port PORT(D - E) and PIN(D - E)
+for PIN manipulation.
