@@ -29,10 +29,10 @@ JAF_UltrasonicLib::JAF_UltrasonicLib(int maxDist)
 // This is for simplicity when using PORTD bit 2 and 3.
 void JAF_UltrasonicLib::init()
 {
-	pinMode(TRIGGERPIN, OUTPUT);
-	pinMode(INTERUPTPIN, INPUT);
-	digitalWrite(TRIGGERPIN, LOW);
-	attachInterrupt(digitalPinToInterrupt(INTERUPTPIN), JAF_UltrasonicLib::_signal, CHANGE);
+	pinMode(TRIGGPIN, OUTPUT);
+	pinMode(ECHOPIN, INPUT);
+	digitalWrite(TRIGGPIN, LOW);
+	attachInterrupt(digitalPinToInterrupt(ECHOPIN), JAF_UltrasonicLib::_signal, CHANGE);
 }
 
 // trigg the sensor to run another start. run this frequently to get readings.
@@ -43,13 +43,13 @@ void JAF_UltrasonicLib::trigg()
 	if (_finished)
 	{
 		_finished = false;
-		// Set trigPin high. PIN 2 on Uno, PIN 19 on Mega 2560
-		PORTD |= B00000100;
+		// Set trigPin high. PIN 2 on Uno and Mega 2560
+		WRITEPORT |= WHIGH;
 
 		delayMicroseconds(10);
 
-		// Set trigpin Low. PIN 2 on Uno, PIN 19 on Mega 2560
-		PORTD &= B11111011;
+		// Set trigpin Low. PIN 2 on Uno and Mega 2560
+		WRITEPORT &= WLOW;
 	}	
 
 	// reset _finished flag ehwn timeout on distance
@@ -74,7 +74,7 @@ uint16_t JAF_UltrasonicLib::getRange()
 void JAF_UltrasonicLib::_signal(){
 	JAF_UltrasonicLib* _this = JAF_UltrasonicLib::instance();
 
-	switch (PIND &= B00001000) // PIN 3 on Uno, PIN 18 on Mega 2560
+	switch (READPIN &= RSIGNAL) // PIN 3 on Uno and Mega 2560
 	{
 		case 8:
 			_this->_startTime = micros();

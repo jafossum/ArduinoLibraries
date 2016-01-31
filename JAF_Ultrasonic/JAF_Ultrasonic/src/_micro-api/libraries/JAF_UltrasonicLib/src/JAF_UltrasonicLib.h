@@ -14,12 +14,21 @@
 	#include "WProgram.h"
 #endif
 
-#if defined(__AVR_ATmega2560__)
-#define INTERUPTPIN 19
-#define TRIGGERPIN 18
-#else
-#define INTERUPTPIN 3
-#define TRIGGERPIN 2
+#define ECHOPIN 3
+#define TRIGGPIN 2
+
+#if defined(ARDUINO_AVR_MEGA2560)
+#define WRITEPORT PORTE
+#define READPIN PINE
+#define WHIGH B00010000
+#define WLOW B11101111
+#define RSIGNAL B00100000
+#elif defined(ARDUINO_AVR_UNO)
+#define WRITEPORT PORTD
+#define READPIN PIND
+#define WHIGH B00000100
+#define WLOW B11111011
+#define RSIGNAL B00001000
 #endif
 
 #define DISTANCE_CALC_CM 58
