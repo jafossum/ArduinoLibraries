@@ -8,8 +8,6 @@
 #include <Arduino.h>
 #include "JAF_EscControllerLib.h"
 
-#define DEBUG 1
-
 JAF_EscControllerLib::JAF_EscControllerLib(){}
 
 #pragma region Members
@@ -19,19 +17,20 @@ JAF_EscControllerLib::JAF_EscControllerLib(){}
 (micros)minLimit = 0% output
 (micros)maxLimit = 100% output */
 
-void JAF_EscControllerLib::init(uint8_t pinNumber, uint16_t minLimit, uint16_t maxLimit)
+void JAF_EscControllerLib::init(uint8_t pinNumber)
 {
-		_minLimit = minLimit;
-		_maxLimit = maxLimit;
-
-	this->attach((int)pinNumber, minLimit, maxLimit);
-	}
+#ifndef MINLIMIT
+	// Hang forever in INIT if ESC type is not set
+	while(1);
+#endif
+	this->attach((int)pinNumber, MINLIMIT, MAXLIMIT);
+}
 
 // Arm the ESC. Sets signal so low the ESC can be armed
 void JAF_EscControllerLib::arm()
 {
 	// Write PWN to uotput pin
-	this->writeMicroseconds(1000);
+	this->writeMicroseconds(ARMLIMIT);
 
 	// Arming device. No output will be written before this flag is set.
 	_armed = true;
@@ -40,26 +39,23 @@ void JAF_EscControllerLib::arm()
 // Set output to ESC 0 - 100%
 void JAF_EscControllerLib::writeMicrosec(uint16_t micros)
 {
-//#if DEBUG
-	Serial.print("Input micros on servo: ");
-	Serial.println(micros);
-//#endif
 
 	if (_armed)
 	{
 		// Write PWN to uotput pin
-		this->writeMicroseconds((int)constrain(micros, _minLimit, _maxLimit));
+		this->writeMicroseconds((int)constrain(micros, MINLIMIT, MAXLIMIT));
 
-//#if DEBUG
-	Serial.print("OutPut micros: ");
-		Serial.println(constrain(micros, _minLimit, _maxLimit));
-//#endif
+#ifdef DEBUG
+		Serial.print("OutPut micros: ");
+		Serial.println(constrain(micros, MINLIMIT, MAXLIMIT));
+#endif
 	}
+
 	else
 	{
-//#if DEBUG
+#ifdef DEBUG
 		Serial.print("OutPut NOT POSSIBLE. DEVICE NOT ARMED");
-//#endif
+#endif
 	}
 
 }
@@ -67,38 +63,25 @@ void JAF_EscControllerLib::writeMicrosec(uint16_t micros)
 // Set output to ESC 0 - 100%
 void JAF_EscControllerLib::writeRelativeOuput(uint8_t output)
 {
-//#if DEBUG
-	Serial.print("Procentage output: ");
-	Serial.println(output);
-//#endif
-
 	// Constrain output between 0 and 100%
 	output = constrain(output, 0, 100);
 
-//#if DEBUG
-	Serial.print("Actual OutPut: ");
-	Serial.println((int)map(output, 0, 100, _minLimit, _maxLimit));
-//#endif
-
 	if (_armed) {
-	// Write PWN to uotput pin
-	this->writeMicroseconds((int)map(output, 0, 100, _minLimit, _maxLimit));
-}
-	else {
-//#if DEBUG
-		Serial.print("OutPut NOT POSSIBLE. DEVICE NOT ARMED");
-//#endif
+	// Write PWM to uotput pin
+		this->writeMicroseconds((int)map(output, 0, 100, MINLIMIT, MAXLIMIT));
+
+#ifdef DEBUG
+		Serial.print("Actual OutPut: ");
+		Serial.println((int)map(output, 0, 100, MINLIMIT, MAXLIMIT));
+#endif
 	}
 
-}
+	else {
+#ifdef DEBUG
+		Serial.print("OutPut NOT POSSIBLE. DEVICE NOT ARMED");
+#endif
+	}
 
-int JAF_EscControllerLib::readSetting()
-{
-	return this->read();
-}
-int JAF_EscControllerLib::readSettingMicroseconds()
-{
-	return this->readMicroseconds();
 }
 
 #pragma endregion

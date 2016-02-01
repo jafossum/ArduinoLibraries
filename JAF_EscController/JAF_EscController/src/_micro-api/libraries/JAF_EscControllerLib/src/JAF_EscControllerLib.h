@@ -10,26 +10,32 @@
 
 #include <Servo.h>
 
+#define AFROESC30
+#define DEBUG
+
+#ifdef AFROESC30
+#define MINLIMIT 1100
+#define MAXLIMIT 1860
+#define ARMLIMIT 1000
+#endif
+
 class JAF_EscControllerLib : Servo
 {
 private:
 
-	uint16_t _minLimit;
-	uint16_t _maxLimit;
 	boolean _armed = false;
 
 public:
 
 	JAF_EscControllerLib();
 
-	void init(uint8_t pinNumber, uint16_t minLimit, uint16_t maxLimit);
+	void init(uint8_t pinNumber);
 	void arm();
 	void writeMicrosec(uint16_t Micros);
 	void writeRelativeOuput(uint8_t output);
-	void setLimits(uint16_t minLimit, uint16_t maxLimit);
 
-	int readSetting();
-	int readSettingMicroseconds();
+	int readSetting() { return this->read(); }
+	int readSettingMicroseconds() { return this->readMicroseconds(); }
 };
 
 #endif

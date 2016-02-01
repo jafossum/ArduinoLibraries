@@ -15,23 +15,16 @@ uint16_t currentOutput = 0;
 JAF_EscControllerLib escTest;
 JAF_EscControllerLib escTest2;
 
-int pin = 2;
-int startTime = 0;
-int stopTime = 0;
-
 // the setup function runs once when you press reset or power the board
 void setup() {
-
-	pinMode(pin, INPUT);
-	attachInterrupt(digitalPinToInterrupt(pin), pulseTimer, CHANGE);
 
 	Serial.begin(57600);
 
 	// Esc 1 on PIN 9
-	escTest.init(9, 1100, 1860);
+	escTest.init(9);
 
 	// Esc 2 on PIN 10
-	escTest2.init(10, 1100, 1860);
+	escTest2.init(10);
 
 	Serial.println("Ready...type a numer to set PWM in microseconds");
 
@@ -90,11 +83,4 @@ void loop() {
 	// Setting loop time close to 50Hz
 	delay(20);
 
-}
-
-void pulseTimer() {
-	Serial.print("Changing state with time: ");
-	stopTime = micros() - startTime;
-	Serial.println(stopTime);
-	startTime = micros();
 }
