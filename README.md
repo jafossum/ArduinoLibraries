@@ -42,3 +42,7 @@ for PIN manipulation.
 ## JAF_PID
 
 PID library for use with arduino. Basic PID regulator implementation with optional feed-forward.
+
+## JAF_Razor9DOF
+
+Wrapper library for setup and usge of the Razor 9DOF sensor board from SparkFun.
