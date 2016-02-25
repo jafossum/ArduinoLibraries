@@ -14,6 +14,46 @@
 	#include "WProgram.h"
 #endif
 
+#define PIDAUTOMATIC 1
+
+class JAF_PIDLib
+{
+public:
+	JAF_PIDLib();
+	~JAF_PIDLib();
+
+	void init(double* Kp, double* Ti, double* Td);
+	bool calculate(double* input, double* output, double* setpoint);
+	void setMode(int Mode, bool useFilter);
+	void initalize();
+
+private:
+	bool _inAuto;
+	bool _useIntegral;
+	bool _useDerivative;
+	bool _useHanningFilter;
+
+	double _Kp;
+	double _Ti;
+	double _Td;
+
+	double _iErrorSum;
+	double _dError;
+	double _Xm1, _Xm2;
+	double _useInput;
+	double _error;
+
+	double _lastTime;
+	double _timeNow;
+};
+
+JAF_PIDLib::JAF_PIDLib()
+{
+}
+
+JAF_PIDLib::~JAF_PIDLib()
+{
+}
 
 #endif
 
