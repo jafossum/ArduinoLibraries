@@ -23,6 +23,7 @@ void JAF_PIDLib::init(double* Kp, double* Ti, double* Td)
 
 // Calulates the output of the regulator
 // Must be in Auto to be used. returns True if runned.
+// Sampling time must be controlled ouside calculate.
 bool JAF_PIDLib::calculate(double* input, double* output, double* setpoint)
 {
 	if (_inAuto)
@@ -32,7 +33,7 @@ bool JAF_PIDLib::calculate(double* input, double* output, double* setpoint)
 		_useIntegral = true ? (_Ti < 100) && (_Ti > 0) : false;
 		_useDerivative = true ? (_Td > 0) : false;
 
-		_useInput = _hanningFilter() ? _useFilter : *input;
+		_useInput = _hanningFilter(input) ? _useFilter : *input;
 		_error = *setpoint - _useInput;
 
 		if (_useIntegral)
@@ -44,13 +45,13 @@ bool JAF_PIDLib::calculate(double* input, double* output, double* setpoint)
 			_iErrorSum = 0;
 		}
 
-		_dError = (_Td * (_useInput - _Xm1)) / _deltaTime) ? _useDerivative : 0;
+		_dError = (_Td * (_useInput - _Xm1) / _deltaTime) ? _useDerivative : 0;
 
 		*output = constrain(_Kp * (_error + _iErrorSum + _dError), _minSaturation, _maxSaturation);
 
 		_Xm2 = _Xm1;
 		_Xm1 = *input;
-		_lastTime = millis()
+		_lastTime = millis();
 
 		return true;
 	}
@@ -82,11 +83,11 @@ void JAF_PIDLib::setSaturation(int min, int max)
 void JAF_PIDLib::setMode(int Mode, bool useFilter)
 {
 	_inAuto = true ? (Mode == PIDAUTOMATIC) : false;
-	_useHanningFilter = true ? useFilter : false;
+	_useFilter = true ? useFilter : false;
 }
 
 // Hanning LPF calculation (Simple as hell)
-double JAF_PIDLib::_hanningFilter()
+double JAF_PIDLib::_hanningFilter(double* input)
 {
 	return (*input + (2 * _Xm1) + _Xm2) / 4;
 }
