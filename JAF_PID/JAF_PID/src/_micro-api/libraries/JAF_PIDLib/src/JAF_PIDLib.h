@@ -23,15 +23,18 @@ public:
 	~JAF_PIDLib();
 
 	void init(double* Kp, double* Ti, double* Td);
+    void initalize();
 	bool calculate(double* input, double* output, double* setpoint);
 	void setMode(int Mode, bool useFilter);
-	void initalize();
+    void setSaturation(int min, int max);
 
 private:
+    double _hanningFilter();
+
 	bool _inAuto;
 	bool _useIntegral;
 	bool _useDerivative;
-	bool _useHanningFilter;
+	bool _useFilter;
 
 	double _Kp;
 	double _Ti;
@@ -44,7 +47,10 @@ private:
 	double _error;
 
 	double _lastTime;
-	double _timeNow;
+    double _deltaTime;
+
+    int _minSaturation;
+    int _maxSaturation;
 };
 
 JAF_PIDLib::JAF_PIDLib()
@@ -56,4 +62,3 @@ JAF_PIDLib::~JAF_PIDLib()
 }
 
 #endif
-
