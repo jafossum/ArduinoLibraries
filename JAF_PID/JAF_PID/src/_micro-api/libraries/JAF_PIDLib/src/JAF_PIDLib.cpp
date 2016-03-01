@@ -61,16 +61,6 @@ bool JAF_PIDLib::calculate(double* input, double* output, double* setpoint)
 	}
 }
 
-// Initializa all values when switching regulator to Automode
-void JAF_PIDLib::initalize()
-{
-	_iErrorSum = 0;
-	_dError = 0;
-	_Xm1 = 0;
-	_Xm2 = 0;
-	_lastTime = 0;
-}
-
 // Set the output saturation values for the PID values
 void JAF_PIDLib::setSaturation(int min, int max)
 {
@@ -84,10 +74,25 @@ void JAF_PIDLib::setMode(int Mode, bool useFilter)
 {
 	_inAuto = true ? (Mode == PIDAUTOMATIC) : false;
 	_useFilter = true ? useFilter : false;
+
+	if (_inAuto)
+	{
+		_initialize();
+	}
 }
 
 // Hanning LPF calculation (Simple as hell)
 double JAF_PIDLib::_hanningFilter(double* input)
 {
 	return (*input + (2 * _Xm1) + _Xm2) / 4;
+}
+
+// Initializa all values when switching regulator to Automode
+void JAF_PIDLib::_initialize()
+{
+	_iErrorSum = 0;
+	_dError = 0;
+	_Xm1 = 0;
+	_Xm2 = 0;
+	_lastTime = 0;
 }

@@ -20,13 +20,13 @@ class JAF_PIDLib
 {
 public:
 	void init(double* Kp, double* Ti, double* Td);
-    void initalize();
 	bool calculate(double* input, double* output, double* setpoint);
 	void setMode(int Mode, bool useFilter);
     void setSaturation(int min, int max);
 
 private:
 	double _hanningFilter(double* input);
+	void _initialize();
 
 	bool _inAuto;
 	bool _useIntegral;
