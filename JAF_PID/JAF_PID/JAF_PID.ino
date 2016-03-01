@@ -28,7 +28,7 @@ void setup() {
 
 	Input = 100;
 
-	myPID.setMode(1, true);
+	myPID.setMode(PIDAUTOMATIC, true);
 }
 
 // the loop function runs over and over again until power down or reset
