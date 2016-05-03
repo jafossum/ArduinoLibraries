@@ -76,7 +76,7 @@ void JAF_UltrasonicLib::_signal(){
 
 	switch (READPIN &= RSIGNAL) // PIN 3 on Uno and Mega 2560
 	{
-		case RVALUE:
+		case RSIGNAL:
 			_this->_startTime = micros();
 			break;
 		case 0:

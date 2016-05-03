@@ -23,14 +23,12 @@
 #define WHIGH B00010000
 #define WLOW B11101111
 #define RSIGNAL B00100000
-#define RVALUE 32
 #elif defined(ARDUINO_AVR_UNO)
 #define WRITEPORT PORTD
 #define READPIN PIND
 #define WHIGH B00000100
 #define WLOW B11111011
 #define RSIGNAL B00001000
-#define RVALUE 8
 #endif
 
 #define DISTANCE_CALC_CM 58
