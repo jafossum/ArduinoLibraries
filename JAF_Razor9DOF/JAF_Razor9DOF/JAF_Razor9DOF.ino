@@ -21,9 +21,9 @@ float roll = 0.0;
 void setup() {
 
 	Serial.begin(57600);
-	Serial2.begin(57600);
+	Serial1.begin(57600);
 
-	Razor9DOF.init(&Serial2, &Serial);
+	Razor9DOF.init(&Serial1, &Serial);
 }
 
 // the loop function runs over and over again until power down or reset
@@ -39,10 +39,10 @@ void loop() {
 
 #ifdef DEBUG
 		Serial.print("Yaw: ");
-		Serial.println(yaw);
+		Serial.print(yaw);
 		Serial.print("Pitch: ");
-		Serial.println(pitch);
-		Serial.print("Roll");
+		Serial.print(pitch);
+		Serial.print("Roll: ");
 		Serial.println(roll);
 #endif
 	}
