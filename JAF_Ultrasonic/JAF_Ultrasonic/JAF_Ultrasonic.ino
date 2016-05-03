@@ -19,7 +19,7 @@ void setup() {
 
 	Ultrasonic.init();
 
-	delay(100);
+	delay(1000);
 
 	Ultrasonic.trigg();
 }
@@ -36,8 +36,8 @@ void loop() {
 		lastMeassurement = meassurement;
 	}
 
-	// Running at 50Hz
-	delay(20);
+	// Running at 5Hz
+	delay(200);
 
 	Ultrasonic.trigg();
 }
